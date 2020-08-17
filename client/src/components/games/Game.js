@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+// Styles
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+
 function Game({ id }) {
   const games = useSelector((state) =>
     state.games.items.filter((game) => game.id === id)
@@ -11,25 +15,24 @@ function Game({ id }) {
 
   return (
     <div className="my-2 text-center">
-      <div className="border-danger card">
-        <div className="card-header lead">{game.name}</div>
-        <img
-          className="card-img-top"
-          src={game.background_image}
-          alt={game.name}
-        />
-        <div className="card-body">
-          <Link
+      <Card className="border-danger">
+        <Card.Header className="lead">{game.name}</Card.Header>
+        <Card.Img variant="top" src={game.background_image} alt={game.name} />
+        <Card.Body>
+          <Button
+            className="my-1 stretched-link"
+            block
+            variant="success"
+            as={Link}
             to={`/info/game/${game.id}`}
-            className="my-1 stretched-link btn btn-block btn-success"
           >
             See Details
-          </Link>
-        </div>
+          </Button>
+        </Card.Body>
         <div className="card-footer text-muted">
           Released: <span>{game.released}</span>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

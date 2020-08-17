@@ -1,15 +1,19 @@
 import React from 'react';
 
+// Style
+import Button from 'react-bootstrap/Button';
+
 const GameWebsite = ({ website }) => {
   return (
-    <a
+    <Button
+      block
+      className="btn-success"
       href={website}
       rel="noopener noreferrer"
       target="_blank"
-      className="btn btn-block btn-success"
     >
       Game Website
-    </a>
+    </Button>
   );
 };
 

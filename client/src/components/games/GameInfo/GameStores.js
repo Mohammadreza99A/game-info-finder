@@ -1,11 +1,17 @@
 import React from 'react';
 
+// Syles
+import Dropdown from 'react-bootstrap/Dropdown';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+
 function GameStores({ stores }) {
   return (
-    <div>
-      <div className="dropdown">
-        <button
-          className="btn btn-success btn-block dropdown-toggle"
+    <>
+      <Dropdown>
+        <Dropdown.Toggle
+          variant="success"
+          block
           type="button"
           id="storesDropdown"
           data-toggle="dropdown"
@@ -14,35 +20,36 @@ function GameStores({ stores }) {
           data-display="static"
         >
           Stores
-        </button>
+        </Dropdown.Toggle>
         <div
           className="dropdown-menu dropdown-menu-lg"
           aria-labelledby="storesDropdown"
           style={{ width: '100%' }}
         >
-          <ul className="list-group text-center">
+          <ListGroup className="text-center">
             {stores.map((store) => {
               return (
-                <li
+                <ListGroup.Item
                   key={store.id}
                   className="dropdown-item"
                   style={{ backgroundColor: 'transparent' }}
                 >
-                  <a
+                  <Button
+                    block
                     href={store.url}
                     rel="noopener noreferrer"
                     target="_blank"
-                    className="btn btn-info btn-block"
+                    className="btn-info"
                   >
                     {store.store.name}
-                  </a>
-                </li>
+                  </Button>
+                </ListGroup.Item>
               );
             })}
-          </ul>
+          </ListGroup>
         </div>
-      </div>
-    </div>
+      </Dropdown>
+    </>
   );
 }
 

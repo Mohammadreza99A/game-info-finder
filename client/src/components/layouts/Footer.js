@@ -1,12 +1,17 @@
 import React from 'react';
 
+// Styles
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 function Footer() {
   return (
-    <div>
+    <>
       <footer className="navbar-dark bg-danger pb-1">
-        <div className="container text-center">
-          <div className="row">
-            <div className="col-md-12 pt-4">
+        <Container className="text-center">
+          <Row>
+            <Col md={12} className="pt-4">
               <div className="flex-center">
                 <a
                   href="https://www.facebook.com/mohammadreza.amini.33"
@@ -33,15 +38,15 @@ function Footer() {
                   <i className="fab fa-github fa-lg white-text fa-2x"> </i>
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
+            </Col>
+          </Row>
+        </Container>
 
         <p className="text-center py-3">
           © 2020 Copyright : <span className="lead">Mohammadreza Amini</span>
         </p>
       </footer>
-    </div>
+    </>
   );
 }
 

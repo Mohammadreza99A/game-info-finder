@@ -1,10 +1,15 @@
 import React from 'react';
 
+// Styles
+import Badge from 'react-bootstrap/Badge';
+
 const GameRating = ({ rating, ratingTop }) => {
   return (
     <>
       Rating (<small>out of {ratingTop}</small>):{' '}
-      <span className="badge badge-danger badge-pill">{rating}</span>
+      <Badge pill variant="light">
+        {rating}
+      </Badge>
     </>
   );
 };

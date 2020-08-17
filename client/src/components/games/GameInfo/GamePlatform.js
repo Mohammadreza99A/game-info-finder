@@ -1,81 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import parse from 'html-react-parser';
 
+// Styles
+import Card from 'react-bootstrap/Card';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+
 const GamePlatform = ({ platform }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div className="my-2 text-center">
-      <div className="border-warning card">
-        <div className="card-body p-2">
-          <h4 className="card-title text-weight-bold">
+      <Card border="warning">
+        <Card.Body className="p-2">
+          <Card.Title as="h4" className="text-weight-bold">
             {platform.platform.name}
-          </h4>
+          </Card.Title>
           {platform.requirements && (
-            <div>
-              <button
-                type="button"
-                className="btn btn-danger"
-                data-toggle="modal"
-                data-target="#requirementsModal"
-              >
+            <>
+              <Button className="btn-danger" onClick={handleShow}>
                 See Requirements
-              </button>
-              <div
-                className="modal fade"
-                id="requirementsModal"
-                tabIndex="-1"
-                role="dialog"
-                aria-labelledby="requirementsModalTitle"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog" role="document">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="requirementsModalTitle">
-                        Requirements
-                      </h5>
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+              </Button>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title as="h5">Requirements</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-left">
+                  {platform.requirements.minimum && (
+                    <div className="mb-2">
+                      {parse(platform.requirements.minimum)}
                     </div>
-                    <div className="modal-body text-left">
-                      {platform.requirements.minimum && (
-                        <div className="mb-2">
-                          {/* <h5 className="lead">Minimum</h5> */}
-                          {parse(platform.requirements.minimum)}
-                        </div>
-                      )}
-                      <hr />
-                      {platform.requirements.recommended && (
-                        <div className="mb-2">
-                          {/* <h5 className="lead">Recommended</h5> */}
-                          {parse(platform.requirements.recommended)}
-                        </div>
-                      )}
+                  )}
+                  <hr />
+                  {platform.requirements.recommended && (
+                    <div className="mb-2">
+                      {/* <h5 className="lead">Recommended</h5> */}
+                      {parse(platform.requirements.recommended)}
                     </div>
-                    <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        data-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  )}
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </>
           )}
-        </div>
-        <div className="card-footer text-muted py-1">
+        </Card.Body>
+        <Card.Footer className="text-muted py-1">
           Released at: {platform.released_at}
-        </div>
-      </div>
+        </Card.Footer>
+      </Card>
     </div>
   );
 };

@@ -6,6 +6,10 @@ import { fetchPopular } from '../../globalState/actions/gameActions';
 import Game from './Game';
 import Spinner from '../layouts/Spinner';
 
+// Styles
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import CardColumns from 'react-bootstrap/CardColumns';
+
 function Games() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.items);
@@ -18,14 +22,14 @@ function Games() {
     return <Spinner />;
   } else {
     return (
-      <div className="container jumbotron mb-5">
+      <Jumbotron className="container mb-5">
         <h1 className="text-center display-4 text-bold mb-5">Popular Games</h1>
-        <div className="card-columns">
+        <CardColumns>
           {games.map((game) => (
             <Game key={game.id} id={game.id} />
           ))}
-        </div>
-      </div>
+        </CardColumns>
+      </Jumbotron>
     );
   }
 }

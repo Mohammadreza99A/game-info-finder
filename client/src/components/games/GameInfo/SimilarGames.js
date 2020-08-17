@@ -7,6 +7,10 @@ import Carousel from 'react-elastic-carousel';
 // Components
 import Spinner from '../../layouts/Spinner';
 
+// Styles
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Figure from 'react-bootstrap/Figure';
+
 const SimilarGames = ({ id }) => {
   const dispatch = useDispatch();
   const similar = useSelector((state) => state.games.similar);
@@ -25,8 +29,8 @@ const SimilarGames = ({ id }) => {
     return <Spinner />;
   } else {
     return (
-      <div
-        className="jumbotron container mt-2"
+      <Jumbotron
+        className="container mt-2"
         style={{
           backgroundColor: 'rgba(0,0,0,.75)',
         }}
@@ -35,17 +39,17 @@ const SimilarGames = ({ id }) => {
         <Carousel
           itemsToShow={3}
           breakPoints={breakPoints}
-          // enableAutoPlay
-          // autoPlaySpeed={4000}
+          enableAutoPlay
+          autoPlaySpeed={2000}
         >
           {similar.map((game) => {
             return (
               <div key={game.id} className="my-2 text-center">
                 <Link to={`/info/game/${game.id}`}>
-                  <figure className="figure">
-                    <img
+                  <Figure>
+                    <Figure.Image
                       src={game.background_image}
-                      className="figure-img img-fluid rounded"
+                      className="img-fluid rounded"
                       style={{
                         display: 'block',
                         height: '200px',
@@ -55,16 +59,14 @@ const SimilarGames = ({ id }) => {
                       }}
                       alt={game.name}
                     />
-                    <figcaption className="figure-caption">
-                      {game.name}
-                    </figcaption>
-                  </figure>
+                    <Figure.Caption>{game.name}</Figure.Caption>
+                  </Figure>
                 </Link>
               </div>
             );
           })}
         </Carousel>
-      </div>
+      </Jumbotron>
     );
   }
 };

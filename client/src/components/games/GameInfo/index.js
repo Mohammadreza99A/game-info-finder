@@ -4,7 +4,6 @@ import { fetchGame } from '../../../globalState/actions/gameActions';
 import { Helmet } from 'react-helmet';
 
 // Components
-// import GameGenres from './GameGenres';
 import GameDevelopers from './GameDevelopers';
 import GameRatings from './GameRatings';
 import GameDescription from './GameDescription';
@@ -17,6 +16,13 @@ import GameWebsite from './GameWebsite';
 import GameBG from './GameBG';
 import SimilarGames from './SimilarGames';
 import GamePlatforms from './GamePlatforms';
+
+// Styles
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 function GameInfo({
   match: {
@@ -41,8 +47,8 @@ function GameInfo({
     return <Spinner />;
   } else {
     return (
-      <div
-        className="jumbotron my-5"
+      <Jumbotron
+        className="my-5"
         style={{
           background: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${game.background_image})`,
           backgroundSize: 'cover',
@@ -52,69 +58,69 @@ function GameInfo({
           height: '100%',
         }}
       >
-        <div
-          className="card container p-0"
+        <Card
+          className="container p-0"
           style={{ backgroundColor: 'rgba(0,0,0,.75)' }}
         >
           <Helmet>
             <title>Game Info Finder | Info Page</title>
           </Helmet>
-          <div className="card-header text-center">
-            <h1 className="card-title">{game.name}</h1>
-            <div className="card-subtitle mb-1 text-muted">
+          <Card.Header className="text-center">
+            <Card.Title>
+              <h1>{game.name}</h1>
+            </Card.Title>
+            <Card.Subtitle className="mb-1 text-muted">
               <GameGenres genres={game.genres} />
-            </div>
-          </div>
-          <div className="card-body">
-            <div className="row text-center lead">
-              <div className="col-sm-6 mb-4 px-2">
+            </Card.Subtitle>
+          </Card.Header>
+          <Card.Body>
+            <Row className="text-center lead">
+              <Col sm={6} className="mb-4 px-2">
                 <div className="border border-warning rounded">
-                  <ul className="list-group">
-                    <li className="list-group-item">
+                  <ListGroup>
+                    <ListGroup.Item>
                       <GameRating
                         rating={game.rating}
                         ratingTop={game.rating_top}
                       />
-                    </li>
-                    <li className="list-group-item">
+                    </ListGroup.Item>
+                    <ListGroup.Item>
                       <GameStores stores={game.stores}></GameStores>
-                    </li>
-                    <li className="list-group-item">
+                    </ListGroup.Item>
+                    <ListGroup.Item>
                       <GameWebsite website={game.website} />
-                    </li>
-                  </ul>
+                    </ListGroup.Item>
+                  </ListGroup>
                 </div>
-              </div>
-              <div className="col-sm-6 mb-4 px-2">
+              </Col>
+              <Col sm={6} className="mb-4 px-2">
                 <div className="border border-warning rounded">
-                  <ul className="list-group">
-                    <li className="list-group-item">
-                      Released: {game.released}
-                    </li>
-                    <li className="list-group-item">
+                  <ListGroup>
+                    <ListGroup.Item>Released: {game.released}</ListGroup.Item>
+                    <ListGroup.Item>
                       <GameDevelopers developers={game.developers} />
-                    </li>
-                    <li className="list-group-item">
+                    </ListGroup.Item>
+                    <ListGroup.Item>
                       <GameBG bgImg={game.background_image} />
-                    </li>
-                  </ul>
+                    </ListGroup.Item>
+                  </ListGroup>
                 </div>
-              </div>
-            </div>
+              </Col>
+            </Row>
             <hr />
             <GameRatings ratings={game.ratings} />
             <hr />
             <GameDescription description={game.description_raw} />
             <hr />
             <GamePlatforms platforms={game.platforms} />
-          </div>
-          <div className="card-footer text-center text-muted">
+          </Card.Body>
+          <Card.Footer className="text-center text-muted">
             <GameTags tags={game.tags} />
-          </div>
-        </div>
+          </Card.Footer>
+        </Card>
 
         <SimilarGames id={id} />
-      </div>
+      </Jumbotron>
     );
   }
 }

@@ -1,9 +1,12 @@
 import React from 'react';
 import ShowMoreText from 'react-show-more-text';
 
+// Styles
+import Container from 'react-bootstrap/Container';
+
 const GameDescription = ({ description }) => {
   return (
-    <div className=" container my-1 mb-4">
+    <Container className="my-1 mb-4">
       <h3 className="font-weight-bold text-center">Description</h3>
       <ShowMoreText
         lines={2}
@@ -14,7 +17,7 @@ const GameDescription = ({ description }) => {
       >
         <p className="text-justify">{description}</p>
       </ShowMoreText>
-    </div>
+    </Container>
   );
 };
 

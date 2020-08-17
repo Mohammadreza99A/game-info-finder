@@ -1,35 +1,32 @@
 import React from 'react';
 
+// Styles
+import Container from 'react-bootstrap/Container';
+import Badge from 'react-bootstrap/Badge';
+
 const GameTags = ({ tags }) => {
-  const colors = [
-    'badge-primary',
-    'badge-success',
-    'badge-danger',
-    'badge-warning',
-    'badge-info',
-    'badge-light',
-  ];
+  const colors = ['primary', 'success', 'danger', 'warning', 'info', 'light'];
 
   return (
-    <div className="container">
-      {/* <h3 className="font-weight-bold text-center">Tags</h3> */}
+    <Container>
       <p className="lead text-center" style={{ lineHeight: '2rem' }}>
-        {' '}
         Tags:
         {tags.map((tag) => {
           const randomColor = colors[Math.floor(Math.random() * colors.length)];
           return (
-            <span
+            <Badge
+              pill
+              variant={randomColor}
+              className="mx-1"
               style={{ opacity: '0.9' }}
-              className={`badge ${randomColor} mx-1`}
               key={tag.id}
             >
               {tag.name}
-            </span>
+            </Badge>
           );
         })}
       </p>
-    </div>
+    </Container>
   );
 };
 

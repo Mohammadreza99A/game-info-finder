@@ -15,7 +15,7 @@ import {
   fetchSearchQuery,
 } from './gameQueries';
 
-const client = new GraphQLClient('http://localhost:5000/graphql', {
+const client = new GraphQLClient('/graphql', {
   headers: {},
 });
 

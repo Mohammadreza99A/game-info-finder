@@ -1,24 +1,19 @@
 import React from 'react';
 
+// Styles
+import Badge from 'react-bootstrap/Badge';
+
 function GameGenres({ genres }) {
-  const colors = [
-    'badge-success',
-    'badge-danger',
-    'badge-warning',
-    'badge-info',
-  ];
+  const colors = ['success', 'danger', 'warning', 'info'];
 
   return (
     <div>
       {genres.map((genre) => {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         return (
-          <span
-            className={`badge badge-pill ${randomColor} mx-1`}
-            key={genre.id}
-          >
+          <Badge pill variant={randomColor} className="mx-1">
             {genre.name}
-          </span>
+          </Badge>
         );
       })}
     </div>

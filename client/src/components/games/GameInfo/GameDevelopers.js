@@ -1,11 +1,16 @@
 import React from 'react';
 
+// Styles
+import Dropdown from 'react-bootstrap/Dropdown';
+import ListGroup from 'react-bootstrap/ListGroup';
+
 function GameDevelopers({ developers }) {
   return (
-    <div>
-      <div className="dropdown">
-        <button
-          className="btn btn-success btn-block dropdown-toggle"
+    <>
+      <Dropdown>
+        <Dropdown.Toggle
+          variant="success"
+          block
           type="button"
           id="developersDropdown"
           data-toggle="dropdown"
@@ -14,30 +19,31 @@ function GameDevelopers({ developers }) {
           data-display="static"
         >
           Developers
-        </button>
+        </Dropdown.Toggle>
         <div
           className="dropdown-menu dropdown-menu-lg"
           aria-labelledby="developersDropdown"
           style={{ width: '100%' }}
         >
-          <ul className="list-group text-center">
+          <ListGroup className="text-center">
             {developers.map((developper) => {
               return (
-                <li
+                <ListGroup.Item
                   key={developper.id}
                   className="dropdown-item"
                   onMouseOver={(e) =>
                     (e.target.style.background = 'transparent')
                   }
+                  onMouseLeave={(e) => (e.target.style.background = '')}
                 >
                   {developper.name}
-                </li>
+                </ListGroup.Item>
               );
             })}
-          </ul>
+          </ListGroup>
         </div>
-      </div>
-    </div>
+      </Dropdown>
+    </>
   );
 }
 

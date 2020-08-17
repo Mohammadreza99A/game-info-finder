@@ -2,9 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
+// Styles
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Button from 'react-bootstrap/Button';
+
 function About() {
   return (
-    <div className="container jumbotron mt-5 mb-5">
+    <Jumbotron className="container mt-5 mb-5">
       <Helmet>
         <title>Game Info Finder | About</title>
       </Helmet>
@@ -48,11 +52,11 @@ function About() {
           <i className="fab fa-github fa-lg"> </i>
         </a>
         <hr />
-        <Link to="/" className="btn btn-info">
+        <Button variant="info" as={Link} to="/">
           <i className="fas fa-home"></i> Go Home
-        </Link>
+        </Button>
       </div>
-    </div>
+    </Jumbotron>
   );
 }
 

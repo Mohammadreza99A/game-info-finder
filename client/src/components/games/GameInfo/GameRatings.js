@@ -1,7 +1,13 @@
 import React from 'react';
 
+// Styles
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+
 const GameRatings = ({ ratings }) => {
-  const colors = ['bg-success', 'bg-danger', 'bg-warning', 'bg-info'];
+  const colors = ['success', 'danger', 'warning', 'info'];
 
   return (
     <div className="my-1 text-center">
@@ -9,28 +15,23 @@ const GameRatings = ({ ratings }) => {
       {ratings.map((rating) => {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         return (
-          <div key={rating.id} className="container text-left">
-            <div className="row lead">
-              <div className="col-sm-2">
+          <Container key={rating.id} className="text-left">
+            <Row className="lead">
+              <Col sm={2}>
                 <span className="text-capitalize">{rating.title}</span>
-              </div>
-              <div className="col-sm-10">
-                <div className="progress my-2">
-                  <div
+              </Col>
+              <Col sm={10}>
+                <div className="my-2">
+                  <ProgressBar
                     key={rating.id}
-                    style={{ width: `${rating.percent}%` }}
-                    className={`progress-bar ${randomColor}`}
-                    role="progressbar"
-                    aria-valuenow={rating.percent}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <span>{rating.count}</span>
-                  </div>
+                    label={rating.count}
+                    now={parseFloat(rating.percent)}
+                    variant={randomColor}
+                  />
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         );
       })}
     </div>

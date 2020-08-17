@@ -1,16 +1,20 @@
 import React from 'react';
 
+// Styles
+import Button from 'react-bootstrap/Button';
+
 const GameBG = ({ bgImg }) => {
   return (
-    <a
+    <Button
+      block
       href={bgImg}
       rel="noopener noreferrer"
       target="_blank"
-      className="btn btn-block btn-success"
+      className="btn-success"
       download
     >
       Donload Background Image
-    </a>
+    </Button>
   );
 };
 
