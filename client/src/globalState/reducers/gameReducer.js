@@ -1,9 +1,17 @@
-import { FETCH_GAMES, CHANGE_HEADING, FETCH_GAME } from '../actions/types';
+import {
+  FETCH_GAMES,
+  FETCH_GAME,
+  FETCH_SEARCH,
+  FETCH_SIMILAR,
+  // CHANGE_HEADING,
+} from '../actions/types';
 
 const intialState = {
-  heading: 'Popular Games',
   items: [],
   item: {},
+  similar: [],
+  search: [],
+  // heading: 'Popular Games',
 };
 
 export default function (state = intialState, action) {
@@ -18,11 +26,21 @@ export default function (state = intialState, action) {
         ...state,
         item: action.payload,
       };
-    case CHANGE_HEADING:
+    case FETCH_SEARCH:
       return {
         ...state,
-        heading: action.payload,
+        search: action.payload,
       };
+    case FETCH_SIMILAR:
+      return {
+        ...state,
+        similar: action.payload,
+      };
+    // case CHANGE_HEADING:
+    //   return {
+    //     ...state,
+    //     heading: action.payload,
+    //   };
     default:
       return state;
   }

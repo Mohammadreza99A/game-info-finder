@@ -1,10 +1,17 @@
-import { FETCH_GAMES, CHANGE_HEADING, FETCH_GAME } from './types';
+import {
+  FETCH_GAMES,
+  FETCH_SEARCH,
+  FETCH_GAME,
+  FETCH_SIMILAR,
+  // CHANGE_HEADING,
+} from './types';
 import { GraphQLClient } from 'graphql-request';
 
 // Queries
 import {
   fetchPopularQuery,
   fetchGameQuery,
+  fetchSimilarQuery,
   fetchSearchQuery,
 } from './gameQueries';
 
@@ -30,18 +37,27 @@ export const fetchGame = (id) => (dispatch) => {
   });
 };
 
+export const fetchSimilar = (id) => (dispatch) => {
+  client.request(fetchSimilarQuery, { id }).then((data) => {
+    dispatch({
+      type: FETCH_SIMILAR,
+      payload: data.similar,
+    });
+  });
+};
+
 export const fetchSearch = (search) => (dispatch) => {
   client.request(fetchSearchQuery, { search }).then((data) => {
     dispatch({
-      type: FETCH_GAMES,
+      type: FETCH_SEARCH,
       payload: data.search,
     });
   });
 };
 
-export const changeHeading = (heading) => (dispatch) => {
-  dispatch({
-    type: CHANGE_HEADING,
-    payload: heading,
-  });
-};
+// export const changeHeading = (heading) => (dispatch) => {
+//   dispatch({
+//     type: CHANGE_HEADING,
+//     payload: heading,
+//   });
+// };

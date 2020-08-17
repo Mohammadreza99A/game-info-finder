@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGame } from '../../../globalState/actions/gameActions';
 import { Helmet } from 'react-helmet';
@@ -15,6 +15,7 @@ import GameRating from './GameRating';
 import Spinner from '../../layouts/Spinner';
 import GameWebsite from './GameWebsite';
 import GameBG from './GameBG';
+import SimilarGames from './SimilarGames';
 import GamePlatforms from './GamePlatforms';
 
 function GameInfo({
@@ -25,10 +26,16 @@ function GameInfo({
   id = parseInt(id);
   const dispatch = useDispatch();
   const game = useSelector((state) => state.games.item);
+  // to see if the game in the page is changed and if true we send the user to top of the page
+  const [currentId, setCurrentId] = useState(id);
 
   useEffect(() => {
     dispatch(fetchGame(id));
-  }, [dispatch, id]);
+    if (currentId !== id) {
+      setCurrentId(id);
+      window.scrollTo(0, 0);
+    }
+  }, [dispatch, id, currentId]);
 
   if (!game || Object.keys(game).length === 0) {
     return <Spinner />;
@@ -105,6 +112,8 @@ function GameInfo({
             <GameTags tags={game.tags} />
           </div>
         </div>
+
+        <SimilarGames id={id} />
       </div>
     );
   }

@@ -146,6 +146,18 @@ const RootQuery = new GraphQLObjectType({
           .catch((err) => console.log(err));
       },
     },
+    similar: {
+      type: new GraphQLList(GameType),
+      args: {
+        gameId: { type: GraphQLInt },
+      },
+      resolve(parentValue, args) {
+        return axios
+          .get(`https://api.rawg.io/api/games/${args.gameId}/suggested`)
+          .then((res) => res.data.results)
+          .catch((err) => console.log(err));
+      },
+    },
   },
 });
 

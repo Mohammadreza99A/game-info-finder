@@ -1,52 +1,3 @@
-export const fetchAllQuery = `{
-  games {
-    id
-    name
-    released
-    tba
-    background_image
-    website
-    ratings {
-      id
-      title
-      count
-      percent
-    }
-    genres {
-      id
-      name
-    }
-    tags {
-      id
-      name
-      language
-    }
-    developpers {
-      id
-      name
-    }
-    stores {
-      id
-      store_details {
-        store_id
-        name
-      }
-    }
-    platforms {
-      platform {
-        id
-        name
-      }
-      released_at
-      requirements {
-        minimum
-        recomended
-      }
-    }
-  }
-}
-`;
-
 export const fetchGameQuery = `
 query getGame($id: Int!) {
   game(game_id: $id) {
@@ -110,6 +61,17 @@ export const fetchPopularQuery = `{
 }
 `;
 
+export const fetchSimilarQuery = `
+query getSimilar($id: Int!){
+  similar(gameId:$id) {
+    id
+    name
+    released
+    background_image
+  }
+}
+`;
+
 export const fetchSearchQuery = `
 query getGames($search: String!){
   search(searchQ:$search) {
@@ -118,5 +80,54 @@ query getGames($search: String!){
       released
       background_image
     }
+}
+`;
+
+export const fetchAllQuery = `{
+  games {
+    id
+    name
+    released
+    tba
+    background_image
+    website
+    ratings {
+      id
+      title
+      count
+      percent
+    }
+    genres {
+      id
+      name
+    }
+    tags {
+      id
+      name
+      language
+    }
+    developpers {
+      id
+      name
+    }
+    stores {
+      id
+      store_details {
+        store_id
+        name
+      }
+    }
+    platforms {
+      platform {
+        id
+        name
+      }
+      released_at
+      requirements {
+        minimum
+        recomended
+      }
+    }
+  }
 }
 `;

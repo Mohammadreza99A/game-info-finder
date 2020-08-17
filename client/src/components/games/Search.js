@@ -1,26 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchSearch,
-  fetchPopular,
-  changeHeading,
-} from '../../globalState/actions/gameActions';
+import { fetchSearch } from '../../globalState/actions/gameActions';
 
 function Search() {
   const dispatch = useDispatch();
-  const games = useSelector((state) => state.games.items);
+  const games = useSelector((state) => state.games.search);
   const [userInput, setUserInput] = useState('');
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyPress, false);
-    if (userInput.length === 0) {
-      dispatch(changeHeading('Popular Games'));
-    }
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress, false);
-    };
-  }, [userInput]);
 
   /**
    * So that the input clears out when pressing on Esc key
@@ -28,22 +14,25 @@ function Search() {
   const handleKeyPress = useCallback((event) => {
     if (event.keyCode === 27) {
       setUserInput('');
-      dispatch(fetchPopular());
-      dispatch(changeHeading('Popular Games'));
     }
   }, []);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress, false);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress, false);
+    };
+  }, [userInput, handleKeyPress]);
 
   const findGame = (e) => {
     e.preventDefault();
     dispatch(fetchSearch(userInput));
-    dispatch(changeHeading('Search Results'));
     setUserInput(''); // reset the form input to blank
   };
 
   const onChange = (e) => {
     setUserInput(e.target.value);
     dispatch(fetchSearch(e.target.value));
-    dispatch(changeHeading('Search Results'));
   };
 
   return (

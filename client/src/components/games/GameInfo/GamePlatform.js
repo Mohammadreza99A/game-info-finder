@@ -13,54 +13,54 @@ const GamePlatform = ({ platform }) => {
             <div>
               <button
                 type="button"
-                class="btn btn-danger"
+                className="btn btn-danger"
                 data-toggle="modal"
                 data-target="#requirementsModal"
               >
                 See Requirements
               </button>
               <div
-                class="modal fade"
+                className="modal fade"
                 id="requirementsModal"
-                tabindex="-1"
+                tabIndex="-1"
                 role="dialog"
                 aria-labelledby="requirementsModalTitle"
                 aria-hidden="true"
               >
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="requirementsModalTitle">
+                <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="requirementsModalTitle">
                         Requirements
                       </h5>
                       <button
                         type="button"
-                        class="close"
+                        className="close"
                         data-dismiss="modal"
                         aria-label="Close"
                       >
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body text-left">
                       {platform.requirements.minimum && (
                         <div className="mb-2">
-                          <h5 className="lead">Minimum</h5>
+                          {/* <h5 className="lead">Minimum</h5> */}
                           {parse(platform.requirements.minimum)}
                         </div>
                       )}
                       <hr />
                       {platform.requirements.recommended && (
                         <div className="mb-2">
-                          <h5 className="lead">Recommended</h5>
+                          {/* <h5 className="lead">Recommended</h5> */}
                           {parse(platform.requirements.recommended)}
                         </div>
                       )}
                     </div>
-                    <div class="modal-footer">
+                    <div className="modal-footer">
                       <button
                         type="button"
-                        class="btn btn-secondary"
+                        className="btn btn-secondary"
                         data-dismiss="modal"
                       >
                         Close
@@ -72,7 +72,7 @@ const GamePlatform = ({ platform }) => {
             </div>
           )}
         </div>
-        <div class="card-footer text-muted py-1">
+        <div className="card-footer text-muted py-1">
           Released at: {platform.released_at}
         </div>
       </div>
