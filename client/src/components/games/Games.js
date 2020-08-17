@@ -26,7 +26,7 @@ function Games() {
         <h1 className="text-center display-4 text-bold mb-5">Popular Games</h1>
         <CardColumns>
           {games.map((game) => (
-            <Game key={game.id} id={game.id} />
+            <Game key={game.id} game={game} />
           ))}
         </CardColumns>
       </Jumbotron>

@@ -1,18 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 // Styles
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-function Game({ id }) {
-  const games = useSelector((state) =>
-    state.games.items.filter((game) => game.id === id)
-  );
-
-  const game = games[0] ? games[0] : null;
-
+function Game({ game }) {
   return (
     <div className="my-2 text-center">
       <Card className="border-danger">

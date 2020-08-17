@@ -7,6 +7,7 @@ const {
   GraphQLFloat,
   GraphQLSchema,
 } = require('graphql');
+const { GraphQLJSON, GraphQLJSONObject } = require('graphql-type-json');
 const axios = require('axios');
 
 // Game Type
@@ -135,14 +136,25 @@ const RootQuery = new GraphQLObjectType({
       },
     },
     search: {
-      type: new GraphQLList(GameType),
+      type: new GraphQLObjectType({
+        name: 'SearchType',
+        fields: {
+          count: { type: GraphQLInt },
+          next: { type: GraphQLString },
+          previous: { type: GraphQLString },
+          results: { type: GraphQLList(GameType) },
+        },
+      }),
       args: {
         searchQ: { type: GraphQLString },
+        page: { type: GraphQLInt },
       },
       resolve(parentValue, args) {
         return axios
-          .get(`https://api.rawg.io/api/games?search="${args.searchQ}"`)
-          .then((res) => res.data.results)
+          .get(
+            `https://api.rawg.io/api/games?page=${args.page}&search="${args.searchQ}"`
+          )
+          .then((res) => res.data)
           .catch((err) => console.log(err));
       },
     },

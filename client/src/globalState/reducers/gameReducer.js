@@ -10,7 +10,7 @@ const intialState = {
   items: [],
   item: {},
   similar: [],
-  search: [],
+  search: {},
   // heading: 'Popular Games',
 };
 

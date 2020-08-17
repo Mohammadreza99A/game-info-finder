@@ -73,13 +73,18 @@ query getSimilar($id: Int!){
 `;
 
 export const fetchSearchQuery = `
-query getGames($search: String!){
-  search(searchQ:$search) {
+query getGames($search: String!, $page: Int!){
+  search(searchQ:$search, page:$page) {
+    count
+    next
+    previous
+    results {
       id
       name
       released
       background_image
     }
+  }
 }
 `;
 

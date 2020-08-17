@@ -46,8 +46,8 @@ export const fetchSimilar = (id) => (dispatch) => {
   });
 };
 
-export const fetchSearch = (search) => (dispatch) => {
-  client.request(fetchSearchQuery, { search }).then((data) => {
+export const fetchSearch = (search, page) => (dispatch) => {
+  client.request(fetchSearchQuery, { search, page }).then((data) => {
     dispatch({
       type: FETCH_SEARCH,
       payload: data.search,
