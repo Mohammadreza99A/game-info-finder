@@ -4,7 +4,7 @@
 
 ## Online Site Link
 
->
+> https://game-info-finder.herokuapp.com/
 
 ## Quick Start
 
