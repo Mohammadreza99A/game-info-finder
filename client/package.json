@@ -1,6 +1,13 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "game-info-finder",
+  "version": "1.0.0",
+  "description": "The frontend for Game Info Finder GraphQL API with React",
+  "license": "MIT",
+  "author": {
+    "name": "Mohammadreza Amini",
+    "email": "mohammadreza99a@yahoo.com",
+    "url": "https://github.com/Mohammadreza99A/"
+  },
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {

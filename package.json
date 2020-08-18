@@ -2,6 +2,12 @@
   "name": "game-info-finder",
   "version": "1.0.0",
   "description": "An app to find relative information for games with RAWG API with GraphQL for backend and ReactJs for frontend",
+  "license": "MIT",
+  "author": {
+    "name": "Mohammadreza Amini",
+    "email": "mohammadreza99a@yahoo.com",
+    "url": "https://github.com/Mohammadreza99A/"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,8 +15,6 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Mohammadreza Amini",
-  "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
     "concurrently": "^5.2.0",
