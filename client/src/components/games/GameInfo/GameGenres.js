@@ -11,7 +11,7 @@ function GameGenres({ genres }) {
       {genres.map((genre) => {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         return (
-          <Badge pill variant={randomColor} className="mx-1">
+          <Badge key={genre.id} pill variant={randomColor} className="mx-1">
             {genre.name}
           </Badge>
         );
