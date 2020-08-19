@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSearch } from '../../globalState/actions/gameActions';
@@ -13,6 +13,7 @@ const SearchForm = () => {
   const games = useSelector((state) => state.games.search);
   const [userInput, setUserInput] = useState('');
   const history = useHistory();
+  const formRef = useRef(null);
 
   /**
    * So that the input clears out when pressing on Esc key
@@ -29,6 +30,22 @@ const SearchForm = () => {
       document.removeEventListener('keydown', handleKeyPress, false);
     };
   }, [userInput, handleKeyPress]);
+
+  /**
+   * this effect is for when the user clicks outside of the search form
+   * in that case, we remove the user input and hide the dropdown
+   */
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (formRef.current && !formRef.current.contains(event.target)) {
+        setUserInput('');
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [formRef]);
 
   const findGame = (e) => {
     e.preventDefault();
@@ -47,9 +64,19 @@ const SearchForm = () => {
   };
 
   return (
-    <Form onSubmit={findGame}>
-      <Form.Group>
+    <Form onSubmit={findGame} ref={formRef}>
+      <Form.Group style={{ marginBottom: '0' }}>
         <InputGroup className="d-flex">
+          <InputGroup.Prepend>
+            <Button
+              variant="warning"
+              type="submit"
+              value="Submit"
+              onClick={onSearch}
+            >
+              <i className="fa fa-search" aria-hidden="true"></i>
+            </Button>
+          </InputGroup.Prepend>
           <Form.Control
             type="text"
             className="border border-warning"
@@ -59,34 +86,30 @@ const SearchForm = () => {
             onChange={onChange}
             style={{ backgroundColor: '#444', color: '#fff' }}
           />
-          <InputGroup.Append>
-            <Button
-              variant="outline-warning"
-              type="submit"
-              value="Submit"
-              onClick={onSearch}
-            >
-              Search
-            </Button>
-          </InputGroup.Append>
         </InputGroup>
         <InputGroup>
           <div
             className={`dropdown-menu w-100 text-center lead ${
               userInput ? 'show' : ''
             }`}
-            style={{ maxHeight: '200px', overflowY: 'auto' }}
+            style={{
+              maxHeight: '200px',
+              overflowY: 'auto',
+              overflowX: 'hidden',
+            }}
           >
             {games.results &&
               games.results.map((game) => {
                 return (
-                  <Link
+                  <Button
+                    as={Link}
                     to={`/info/game/${game.id}`}
                     key={game.id}
                     className="dropdown-item"
+                    onClick={() => setUserInput('')}
                   >
                     {game.name}
-                  </Link>
+                  </Button>
                 );
               })}
           </div>

@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Components
+import SearchForm from './SearchForm';
+
+// Styles
 import { Navbar as NavBar, Nav, Container, NavItem } from 'react-bootstrap';
 
 function Navbar() {
@@ -30,6 +34,7 @@ function Navbar() {
               </Nav.Link>
             </NavItem>
           </Nav>
+          <SearchForm />
         </NavBar.Collapse>
       </Container>
     </NavBar>
