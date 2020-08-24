@@ -5,7 +5,7 @@ import { Spinner as SpinnerStyle } from 'react-bootstrap';
 
 function Spinner() {
   return (
-    <div className="d-flex justify-content-center my-5 py-5">
+    <div className="d-flex justify-content-center my-5 py-5 vh-100">
       <SpinnerStyle
         animation="grow"
         variant="danger"
