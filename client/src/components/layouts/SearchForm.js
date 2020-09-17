@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSearch } from '../../globalState/actions/gameActions';
 
@@ -14,6 +14,7 @@ const SearchForm = () => {
   const [userInput, setUserInput] = useState('');
   const history = useHistory();
   const formRef = useRef(null);
+  const location = useLocation();
 
   /**
    * So that the input clears out when pressing on Esc key
@@ -49,7 +50,7 @@ const SearchForm = () => {
 
   const findGame = (e) => {
     e.preventDefault();
-    dispatch(fetchSearch(userInput, 1)); // second param is page number
+    if (!location.pathname.match('search')) dispatch(fetchSearch(userInput, 1)); // second param is page number
     setUserInput(''); // reset the form input to blank
   };
 
