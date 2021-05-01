@@ -9,6 +9,9 @@ const {
 } = require('graphql');
 const { GraphQLJSON, GraphQLJSONObject } = require('graphql-type-json');
 const axios = require('axios');
+require('dotenv').config();
+
+const API_KEY = process.env.RAWG_API_KEY;
 
 // Game Type
 const GameType = new GraphQLObjectType({
@@ -118,7 +121,7 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(GameType),
       resolve(parentValue, args) {
         return axios
-          .get('https://api.rawg.io/api/games')
+          .get(`https://api.rawg.io/api/games?key=${API_KEY}`)
           .then((res) => res.data.results)
           .catch((err) => console.log(err));
       },
@@ -130,7 +133,7 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parentValue, args) {
         return axios
-          .get(`https://api.rawg.io/api/games/${args.game_id}`)
+          .get(`https://api.rawg.io/api/games/${args.game_id}?key=${API_KEY}`)
           .then((res) => res.data)
           .catch((err) => console.log(err));
       },
@@ -152,21 +155,9 @@ const RootQuery = new GraphQLObjectType({
       resolve(parentValue, args) {
         return axios
           .get(
-            `https://api.rawg.io/api/games?page=${args.page}&search="${args.searchQ}"`
+            `https://api.rawg.io/api/games?key=${API_KEY}&page=${args.page}&search="${args.searchQ}"`
           )
           .then((res) => res.data)
-          .catch((err) => console.log(err));
-      },
-    },
-    similar: {
-      type: new GraphQLList(GameType),
-      args: {
-        gameId: { type: GraphQLInt },
-      },
-      resolve(parentValue, args) {
-        return axios
-          .get(`https://api.rawg.io/api/games/${args.gameId}/suggested`)
-          .then((res) => res.data.results)
           .catch((err) => console.log(err));
       },
     },

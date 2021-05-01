@@ -119,7 +119,7 @@ function GameInfo({
           </Card.Footer>
         </Card>
 
-        <SimilarGames id={id} />
+        {/* <SimilarGames id={id} /> */}
       </Jumbotron>
     );
   }
