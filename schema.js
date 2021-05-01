@@ -9,7 +9,9 @@ const {
 } = require('graphql');
 const { GraphQLJSON, GraphQLJSONObject } = require('graphql-type-json');
 const axios = require('axios');
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 const API_KEY = process.env.RAWG_API_KEY;
 
