@@ -1,0 +1,8 @@
+type Website {
+  id: ID!
+  category: WebsiteCategoryEnum
+  checksum: String
+  game: Int
+  trusted: Boolean
+  url: String
+}

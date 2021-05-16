@@ -1,0 +1,11 @@
+type Image {
+  id: ID!
+  alpha_channel: Boolean
+  animated: Boolean
+  checksum: String
+  game: Int
+  height: Int
+  image_id: String
+  url: String
+  width: Int
+}

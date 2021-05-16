@@ -1,0 +1,16 @@
+type AgeRatingContentDescription {
+  id: ID!
+  category: AgeRatingContentDescriptionCategoryEnum
+  checksum: String
+  description: String
+}
+
+type AgeRating {
+  id: ID!
+  category: AgeRatingCategoryEnum
+  checksum: String
+  content_descriptions: [Int]
+  rating: RatingEnum
+  rating_cover_url: String
+  synopsis: String
+}

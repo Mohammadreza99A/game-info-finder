@@ -1,0 +1,79 @@
+type Platform {
+  id: ID!
+  abbreviation: String
+  alternative_name: String
+  category: PlatformCategoryEnum
+  checksum: String
+  created_at: Int
+  generation: Int
+  name: String
+  platform_family: Int
+  platform_logo: Int
+  slug: String
+  summary: String
+  updated_at: Int
+  url: String
+  versions: [Int]
+  websites: [Int]
+}
+
+type PlatformFamily {
+  id: ID!
+  checksum: String
+  name: String
+  slug: String
+}
+
+type PlatformVersionCompany {
+  id: ID!
+  checksum: String
+  comment: String
+  company: Int
+  developer: Boolean
+  manufacturer: Boolean
+}
+
+type PlatformVersion {
+  id: ID!
+  checksum: String
+  companies: [Int]
+  connectivity: String
+  cpu: String
+  graphics: String
+  main_manufacturer: Int
+  media: String
+  memory: String
+  name: String
+  os: String
+  output: String
+  platform_logo: Int
+  platform_version_release_dates: [Int]
+  resolutions: String
+  slug: String
+  sound: String
+  storage: String
+  summary: String
+  url: String
+}
+
+type PlatformVersionReleaseDate {
+  id: ID!
+  category: DateCategoryEnum
+  checksum: String
+  created_at: Int
+  date: Int
+  human: String
+  m: Int
+  platform_version: Int
+  region: RegionEnum
+  updated_at: Int
+  y: Int
+}
+
+type PlatformWebsit {
+  id: ID!
+  category: PlatformWebsiteCategoryEnum
+  checksum: String
+  trusted: Boolean
+  url: String
+}

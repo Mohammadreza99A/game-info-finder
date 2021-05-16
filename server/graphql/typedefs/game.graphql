@@ -1,0 +1,134 @@
+type ExternalGame {
+  id: ID!
+  category: ExternalGameCategoryEnum
+  checksum: String
+  countries: [Int]
+  created_at: Int
+  game: Int
+  media: ExternalGameMediaEnum
+  platform: Int
+  uid: String
+  updated_at: Int
+  url: String
+  year: Int
+}
+
+type GameEngine {
+  id: ID!
+  checksum: String
+  companies: [Int]
+  created_at: Int
+  desciption: String
+  logo: Int
+  name: String
+  platforms: [Int]
+  slug: String
+  updated_at: Int
+  url: String
+}
+
+type GameVersion {
+  id: ID!
+  checksum: String
+  created_at: Int
+  features: [Int]
+  game: Int
+  games: [Int]
+  updated_at: Int
+  url: String
+}
+
+type GameMode {
+  id: ID!
+  checksum: String
+  created_at: Int
+  name: String
+  slug: String
+  updated_at: Int
+  url: String
+}
+
+type GameVideo {
+  id: ID!
+  checksum: String
+  game: Int
+  name: String
+  video_id: String
+}
+
+type GameVersionFeatureValue {
+  id: ID!
+  checksum: String
+  game: Int
+  game_feature: Int
+  included_feature: IncludedFeatureEnum
+  note: String
+}
+
+type GameVersionFeature {
+  id: ID!
+  category: GameVersionFeatureCategoryEnum
+  checksum: String
+  desciption: String
+  position: Int
+  title: String
+  values: [Int]
+}
+
+type Game {
+  id: ID!
+  age_ratings: [Int]
+  aggregated_rating: Float
+  aggregated_rating_count: Int
+  alternative_names: [Int]
+  artworks: [Int]
+  bundles: [Int]
+  category: GameCategoryEnum
+  checksum: String
+  collection: Int
+  cover: Int
+  created_at: Int
+  dlcs: [Int]
+  expanded_games: [Int]
+  expansions: [Int]
+  external_games: [Int]
+  first_release_date: Int
+  follows: Int
+  forks: [Int]
+  franchise: Int
+  franchises: Int
+  game_engines: Int
+  game_modes: Int
+  genres: Int
+  hypes: Int
+  involved_companies: [Int]
+  keywords: [Int]
+  multiplayer_modes: [Int]
+  name: String
+  parent_game: Int
+  platforms: [Int]
+  player_perspectives: [Int]
+  ports: [Int]
+  rating: Float
+  rating_count: Int
+  release_dates: [Int]
+  remakes: [Int]
+  remasters: [Int]
+  screenshots: [Int]
+  similar_games: [Int]
+  slug: String
+  standalone_expansions: [Int]
+  status: GameStatusEnum
+  storyline: String
+  summary: String
+  tags: [Int]
+  themes: [Int]
+  total_rating: Float
+  total_rating_count: Int
+  updated_at: Int
+  url: String
+  version_parent: Int
+  version_title: String
+  videos: [Int]
+  websites: [Int]
+}

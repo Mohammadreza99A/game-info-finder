@@ -1,0 +1,16 @@
+type Character {
+  id: ID!
+  akas: [String]
+  checksum: String
+  country_name: String
+  created_at: Int
+  description: String
+  games: [Int]
+  gender: GenderEnum
+  mug_shot: Int
+  name: String
+  slug: String
+  species: SpeciesEnum
+  updated_at: Int
+  url: String
+}

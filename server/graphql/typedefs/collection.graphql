@@ -1,0 +1,10 @@
+type Collection {
+  id: ID!
+  created_at: Int
+  games: [Int]
+  name: String
+  slug: String
+  updated_at: Int
+  url: String
+  checksum: String
+}

@@ -1,0 +1,107 @@
+type Query {
+  # Image
+  artworks: [Image]!
+  artwork(id: ID!): [Image]!
+  covers: [Image]!
+  cover(id: ID!): [Image]!
+  company_logos: [Image]!
+  company_logo(id: ID!): [Image]!
+  screenshots: [Image]!
+  screenshot(id: ID!): [Image]!
+
+  # Character
+  characters: [Character]!
+  character(id: ID!): [Character]!
+  characters_mugshot: [Image]!
+  character_mugshot(id: ID!): [Image]!
+
+  # Collection
+  collections: [Collection]!
+  collection(id: ID!): [Collection]!
+
+  # Company
+  companies: [Company]!
+  company(id: ID!): [Company]!
+  involved_companies: [InvolvedCompany]!
+  involved_company(id: ID!): [InvolvedCompany]!
+  companies_website: [Website]!
+  company_website(id: ID!): [Website]
+  franchises: [Franchise]!
+  franchise(id: ID!): [Franchise]
+
+  # Release date
+  release_dates: [ReleaseDate]!
+  release_date(id: ID!): [ReleaseDate]!
+
+  # Game
+  external_games: [ExternalGame]!
+  external_game(id: ID!): [ExternalGame]!
+  game_engines: [GameEngine]!
+  game_engine(id: ID!): [GameEngine]!
+  game_engine_logos: [Image]!
+  game_engine_logo(id: ID!): [Image]!
+  game_versions: [GameVersion]!
+  game_version(id: ID!): [GameVersion]!
+  game_modes: [GameMode]!
+  game_mode(id: ID!): [GameMode]!
+  game_videos: [GameVideo]!
+  game_video(id: ID!): [GameVideo]!
+  game_version_feature_values: [GameVersionFeatureValue]!
+  game_version_feature_value(id: ID!): [GameVersionFeatureValue]!
+  game_version_features: [GameVersionFeature]!
+  game_version_feature(id: ID!): [GameVersionFeature]!
+  games: [Game]!
+  game(id: ID!): [Game]!
+
+  # Genre
+  genres: [Genre]!
+  genre(id: ID!): [Genre]!
+
+  # Keyword
+  keywords: [Keyword]!
+  keyword(id: ID!): [Keyword]!
+
+  # Name
+  alternative_names: [AlternativeName]!
+  alternative_name(id: ID!): [AlternativeName]!
+
+  # Website
+  websites: [Website]!
+  website(id: ID!): [Website]!
+
+  # Theme
+  themes: [Theme]!
+  theme(id: ID!): [Theme]!
+
+  # Search
+  searches: [Search]!
+  search(id: ID!): [Search]!
+
+  # Platform
+  platforms: [Platform]!
+  platform(id: ID!): [Platform]!
+  platform_families: [PlatformFamily]!
+  platform_family(id: ID!): [PlatformFamily]!
+  platform_version_companies: [PlatformVersionCompany]!
+  platform_version_company(id: ID!): [PlatformVersionCompany]!
+  platform_versions: [PlatformVersion]!
+  platform_version(id: ID!): [PlatformVersion]!
+  platform_version_release_dates: [PlatformVersionReleaseDate]!
+  platform_version_release_date(id: ID!): [PlatformVersionReleaseDate]!
+  platform_websites: [PlatformWebsit]!
+  platform_website(id: ID!): [PlatformWebsit]!
+  platform_logos: [Image]!
+  platform_logo(id: ID!): [Image]!
+
+  # Player
+  multiplayer_modes: [MultiPlayerMode]!
+  multiplayer_mode(id: ID!): [MultiPlayerMode]!
+  player_perspectives: [PlayerPerspective]!
+  player_perspective(id: ID!): [PlayerPerspective]!
+
+  # Rating
+  age_rating_content_descriptions: [AgeRatingContentDescription]!
+  age_rating_content_description(id: ID!): [AgeRatingContentDescription]!
+  age_ratings: [AgeRating]!
+  age_rating(id: ID!): [AgeRating]!
+}
