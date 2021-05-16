@@ -1,0 +1,45 @@
+type Company {
+  id: ID!
+  change_date: Int
+  change_date_category: DateCategoryEnum
+  changed_company_id: Int
+  checksum: String
+  country: Int
+  created_at: Int
+  description: String
+  developed: [Int]
+  logo: Int
+  name: String
+  parent: Int
+  published: [Int]
+  slug: String
+  start_date: Int
+  start_date_category: DateCategoryEnum
+  updated_at: Int
+  url: String
+  websites: [Int]
+}
+
+type InvolvedCompany {
+  id: ID!
+  checksum: String
+  company: Int
+  created_at: Int
+  developer: Boolean
+  game: Int
+  porting: Boolean
+  publisher: Boolean
+  supporting: Boolean
+  updated_at: Int
+}
+
+type Franchise {
+  id: ID!
+  checksum: String
+  created_at: Int
+  games: [Int]
+  name: String
+  slug: String
+  updated_at: Int
+  url: String
+}

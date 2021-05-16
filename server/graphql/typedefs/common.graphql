@@ -1,0 +1,165 @@
+enum GenderEnum {
+  Male
+  Female
+  Other
+}
+
+enum SpeciesEnum {
+  Human
+  Alien
+  Animal
+  Android
+  Unknown
+}
+
+enum DateCategoryEnum {
+  YYYYMMMMDD
+  YYYYMMMM
+  YYYY
+  YYYYQ1
+  YYYYQ2
+  YYYYQ3
+  YYYYQ4
+  TBD
+}
+
+enum WebsiteCategoryEnum {
+  official
+  wikia
+  wikipedia
+  facebook
+  twitter
+  twitch
+  other
+  instagram
+  youtube
+  iphone
+  ipad
+  android
+  steam
+  reddit
+  itch
+  epicgames
+  gog
+  discord
+}
+
+enum ExternalGameCategoryEnum {
+  steam
+  unkonwn
+  gog
+  youtube
+  microsoft
+  apple
+  twitch
+  android
+}
+
+enum ExternalGameMediaEnum {
+  digital
+  physical
+}
+
+enum IncludedFeatureEnum {
+  NOT_INCLUDED
+  INCLUDED
+  PRE_ORDER_ONLY
+}
+
+enum GameVersionFeatureCategoryEnum {
+  boolean
+  description
+}
+
+enum GameCategoryEnum {
+  main_game
+  dlc_addon
+  expansion
+  bundle
+  standalone_expansion
+  mod
+  episode
+  season
+  remake
+  remaster
+  expanded_game
+  port
+  fork
+}
+
+enum GameStatusEnum {
+  released
+  alpha
+  beta
+  early_access
+  offline
+  cancelled
+  rumored
+}
+
+enum PlatformCategoryEnum {
+  console
+  arcade
+  platform
+  operating_system
+  portable_console
+  computer
+}
+
+enum RegionEnum {
+  europe
+  north_america
+  australia
+  new_zealand
+  japan
+  china
+  asia
+  worldwide
+}
+
+enum PlatformWebsiteCategoryEnum {
+  official
+  wikia
+  wikipedia
+  facebook
+  twitter
+  twitch
+  instagram
+  youtube
+  iphone
+  ipad
+  android
+  steam
+  reddit
+  discord
+  google_plus
+  tumblr
+  linkedin
+  pinterest
+  soundcloud
+}
+
+enum AgeRatingContentDescriptionCategoryEnum {
+  PEGI
+  ESRB
+}
+
+enum AgeRatingCategoryEnum {
+  ESRB
+  PEGI
+}
+
+enum RatingEnum {
+  Three
+  Seven
+  Twelve
+  Sixteen
+  Eighteen
+  RP
+  EC
+  E
+  E10
+  T
+  M
+  AO
+}

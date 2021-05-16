@@ -1,0 +1,27 @@
+type MultiPlayerMode {
+  id: ID!
+  campaigncoop: Boolean
+  checksum: String
+  dropin: Boolean
+  game: Int
+  lancoop: Boolean
+  offlinecoop: Boolean
+  offlinecoopmax: Int
+  offlinemax: Int
+  onlinecoop: Boolean
+  onlinecoopmax: Int
+  onlinemax: Int
+  platform: Int
+  splitscreen: Boolean
+  splitscreenonline: Boolean
+}
+
+type PlayerPerspective {
+  id: ID!
+  checksum: String
+  created_at: Int
+  name: String
+  slug: String
+  updated_at: Int
+  url: String
+}

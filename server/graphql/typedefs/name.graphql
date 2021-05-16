@@ -1,0 +1,7 @@
+type AlternativeName {
+  id: ID!
+  checksum: String
+  comment: String
+  game: Int
+  name: String
+}

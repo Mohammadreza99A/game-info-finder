@@ -1,0 +1,15 @@
+type Search {
+  id: ID!
+  alternative_name: String
+  character: Int
+  checksum: String
+  collection: Int
+  company: Int
+  description: String
+  game: Int
+  name: String
+  platform: Int
+  published_at: Int
+  test_dummy: Int
+  theme: Int
+}

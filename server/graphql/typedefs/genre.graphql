@@ -1,0 +1,9 @@
+type Genre {
+  id: ID!
+  checksum: String
+  created_at: Int
+  name: String
+  slug: String
+  updated_at: Int
+  url: String
+}

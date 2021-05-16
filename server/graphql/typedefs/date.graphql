@@ -1,0 +1,14 @@
+type ReleaseDate {
+  id: ID!
+  category: DateCategoryEnum
+  checksum: String
+  created_at: Int
+  date: Int
+  game: Int
+  human: String
+  m: Int
+  platform: Int
+  region: RegionEnum
+  updated_at: Int
+  y: Int
+}
